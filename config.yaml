@@ -1,0 +1,35 @@
+# PowerGuard Configuration
+model:
+  name: "RandomForestClassifier"
+  n_estimators: 100
+  random_state: 42
+  test_size: 0.2
+
+anomaly_detection:
+  threshold_factor: 2.0  # multiplier for standard deviation
+  min_samples_for_training: 100
+
+data:
+  # Common column name patterns for automatic detection
+  timestamp_patterns:
+    - "datetime"
+    - "timestamp" 
+    - "settlement_date"
+    - "date"
+    - "time"
+  
+  power_patterns:
+    - "aep_mw"
+    - "powerconsumption"
+    - "power_consumption"
+    - "power"
+    - "consumption"
+    - "load"
+    - "demand"
+
+paths:
+  data_dir: "data"
+  model_dir: "model"
+  logs_dir: "logs"
+  model_file: "energy_theft_detection_model.pkl"
+  scaler_file: "feature_scaler.pkl"
